@@ -18,17 +18,13 @@ int read_call(int fd, void *buffer, size_t length) {
 */
 import "C"
 import (
-	"errors"
 	"unsafe"
 )
 
 // CwriteAll is a cgo call for write
 func CwriteAll(fd int, buf []byte) error {
-	ret := C.write_all(C.int(fd), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
-	if ret < 0 {
-		return errors.New("write error")
-	}
-	return nil
+	_, err := C.write_all(C.int(fd), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
+	return err
 }
 
 // Cread is a cgo call for read

@@ -12,18 +12,18 @@ sh run.sh
 goos: darwin
 goarch: amd64
 pkg: github.com/changkun/cgo-benchmarks/syscall
-BenchmarkReadWriteCgoCalls-4      500000              3215 ns/op
-BenchmarkReadWriteGoCalls-4       500000              2781 ns/op
-BenchmarkReadWritePureCCalls      500000              2348 ns/op
+BenchmarkReadWriteCgoCalls-4      500000              3532 ns/op
+BenchmarkReadWriteGoCalls-4       500000              2599 ns/op
+BenchmarkReadWritePureCCalls      500000              2244 ns/op
 PASS
-ok      github.com/changkun/cgo-benchmarks/syscall      3.085s
+ok      github.com/changkun/cgo-benchmarks/syscall      3.142s
 ```
 
 ## Conclusions
 
-- Pure Go system call is `(3215 - 2781) / 2781 = 15.61%` faster than Cgo call.
-- Pure C system call is `(2781 - 2348) / 2348 = 18.44%` faster than Go system call.
-- Pure C system call is `(3215 - 2348) / 2348 = 36.93%` faster than Cgo system call.
+- Pure Go system call is `(3532 - 2599) / 2599 = 35.90%` faster than Cgo call.
+- Pure C system call is `(2599 - 2244) / 2244 = 15.82%` faster than Go system call.
+- Pure C system call is `(3532 - 2244) / 2244 = 57.40%` faster than Cgo system call.
 
 ## Related researches
 
