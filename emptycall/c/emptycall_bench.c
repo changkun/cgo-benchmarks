@@ -1,22 +1,5 @@
 #include <time.h>
 #include <stdio.h>
-#include <unistd.h>
-#include <sys/socket.h>
-
-int write_all(int fd, void* buffer, size_t length) {
-    while (length > 0) {
-        int written = write(fd, buffer, length);
-        if (written < 0)
-            return -1;
-        length -= written;
-        buffer += written;
-    }
-    return length;
-}
-
-int read_call(int fd, void *buffer, size_t length) {
-	return read(fd, buffer, length);
-}
 
 // call this function to start a nanosecond-resolution timer
 struct timespec timer_start(){
@@ -33,19 +16,15 @@ long timer_end(struct timespec start_time){
     return diffInNanos;
 }
 
+void empty() {}
+
 int main() {
     int i = 0;
-    int N = 500000;
-    int fds[2];
-    char message[14] = "hello, world!\0";
-    char buffer[14] = {0};
-
-    socketpair(AF_UNIX, SOCK_STREAM, 0, fds);
+    int N = 2000000000;
     struct timespec vartime = timer_start();
     for(i = 0; i < N; i++) {
-        write_all(fds[0], message, sizeof(message));
-        read_call(fds[1], buffer, 14);
+        empty();
     }
     long time_elapsed_nanos = timer_end(vartime);
-    printf("BenchmarkReadWritePureCCalls\t%d\t%.2ld ns/op\n", N, time_elapsed_nanos/N);
+    printf("BenchmarkEmptyCCalls\t%d\t%.2ld ns/op\n", N, time_elapsed_nanos/N);
 }

@@ -1,35 +1,35 @@
 # Benchmark: CGO vs GO vs C in System Calls `read/write`
 
-## Usage
+## Run
 
 ```bash
 sh run.sh
 ```
 
-## Result
+## Results
 
 ```
 goos: darwin
 goarch: amd64
-pkg: github.com/sjtushi/guacamole-go/benchmarks/syscall
-BenchmarkEmptyCgoCalls-4        10000000               136 ns/op
-BenchmarkEmptyGoCalls-4        200000000              8.66 ns/op
-BenchmarkReadWriteCgoCalls-4      300000              4282 ns/op
-BenchmarkReadWriteGoCalls-4       500000              3715 ns/op
-BenchmarkReadWritePureCCalls      300000              2682 ns/op
+pkg: github.com/changkun/cgo-benchmarks/syscall
+BenchmarkReadWriteCgoCalls-4      500000              3215 ns/op
+BenchmarkReadWriteGoCalls-4       500000              2781 ns/op
+BenchmarkReadWritePureCCalls      500000              2348 ns/op
 PASS
-ok      github.com/sjtushi/guacamole-go/benchmarks/syscall      7.126s
+ok      github.com/changkun/cgo-benchmarks/syscall      3.085s
 ```
 
 ## Conclusions
 
-- Pure Go call is `(136 - 8.66) / 136 = 93.6%` faster than Cgo call. 
-- Pure Go system call is `(4684 - 3518) / 4684 = 24.8%` faster than Cgo call.
-- Pure C system call is `(3715 - 2682) / 3715 = 27.8%` faster than Go system call.
-- Pure C system call is `(4684 - 2682) / 4684 = 42.7%` faster than Cgo system call.
+- Pure Go system call is `(3215 - 2781) / 2781 = 15.61%` faster than Cgo call.
+- Pure C system call is `(2781 - 2348) / 2348 = 18.44%` faster than Go system call.
+- Pure C system call is `(3215 - 2348) / 2348 = 36.93%` faster than Cgo system call.
 
 ## Related researches
 
 - https://github.com/golang/go/issues/19563
 - https://github.com/golang/go/issues/19574
-- https://github.com/draffensperger/go-interlang
+
+## License
+
+MIT &copy; [Changkun Ou](https://changkun.de)

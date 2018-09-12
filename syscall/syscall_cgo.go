@@ -15,8 +15,6 @@ int write_all(int fd, void* buffer, size_t length) {
 int read_call(int fd, void *buffer, size_t length) {
 	return read(fd, buffer, length);
 }
-void empty() {
-}
 */
 import "C"
 import (
@@ -37,9 +35,4 @@ func CwriteAll(fd int, buf []byte) error {
 func Cread(fd int, buf []byte) (int, error) {
 	ret, err := C.read_call(C.int(fd), unsafe.Pointer(&buf[0]), C.size_t(len(buf)))
 	return int(ret), err
-}
-
-// Cempty is a empty CGO call, intends to measure pure CGO call overhead
-func Cempty(fd int, buf []byte) {
-	C.empty()
 }
