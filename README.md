@@ -32,7 +32,7 @@ ok      github.com/sjtushi/guacamole-go/benchmarks/syscall      7.126s
 - Pure Go call is `(136 - 8.66) / 136 = 93.6%` faster than Cgo call. 
 - Pure Go system call is `(4684 - 3518) / 4684 = 24.8%` faster than Cgo call.
 - Pure C system call is `(3715 - 2682) / 3715 = 27.8%` faster than Go system call.
-- Pure C system call is `(4684 - 2682) / 3715 = 53.9%` faster than Cgo system call.
+- Pure C system call is `(4684 - 2682) / 4684 = 42.7%` faster than Cgo system call.
 
 ### Related researches
 
