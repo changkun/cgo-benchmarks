@@ -8,6 +8,8 @@ sh run.sh
 
 ## Results
 
+![](govsc.png)
+
 ```
 goos: darwin
 goarch: amd64
