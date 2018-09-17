@@ -20,11 +20,11 @@ void empty() {}
 
 int main() {
     int i = 0;
-    int N = 2000000000;
+    long N = 1000000000;
     struct timespec vartime = timer_start();
     for(i = 0; i < N; i++) {
         empty();
     }
     long time_elapsed_nanos = timer_end(vartime);
-    printf("BenchmarkEmptyCCalls\t%d\t%.2ld ns/op\n", N, time_elapsed_nanos/N);
+    printf("BenchmarkEmptyCCalls\t%ld\t%.2f ns/op\n", N, ((double)time_elapsed_nanos)/N);
 }

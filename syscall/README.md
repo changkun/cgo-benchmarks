@@ -8,7 +8,9 @@ sh run.sh
 
 ## Results
 
-![](govsc.png)
+![](cgo-go-c.png)
+
+see [data](https://docs.google.com/spreadsheets/d/1DwtZmP8fKKr3pOQWVJrD30DSOzv4_qB5KZvsd-DQ1KA/edit?usp=sharing).
 
 ```
 goos: darwin
@@ -16,6 +18,7 @@ goarch: amd64
 pkg: github.com/changkun/cgo-benchmarks/syscall
 BenchmarkReadWriteCgoCalls-4      500000              3532 ns/op
 BenchmarkReadWriteGoCalls-4       500000              2599 ns/op
+BenchmarkReadWriteNetCalls-8      500000              2890 ns/op
 BenchmarkReadWritePureCCalls      500000              2244 ns/op
 PASS
 ok      github.com/changkun/cgo-benchmarks/syscall      3.142s

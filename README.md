@@ -29,7 +29,7 @@ ok      github.com/changkun/cgo-benchmarks/emptycall    1.807s
 
 ## Benchmark: CGO vs GO vs C in System Calls `read/write`
 
-![](syscall/govsc.png)
+![](syscall/cgo-go-c.png)
 
 ### Results
 
